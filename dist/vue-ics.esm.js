@@ -1,11 +1,11 @@
 /*!
- * vue-ics v0.1.3 
+ * vue-ics v0.1.4 
  * (c) 2020 Stanislav Mihaylov <ceo@pepper.llc>
  * Released under the MIT License.
  */
 import { saveAs } from 'file-saver';
 
-var version = '0.1.3';
+var version = '0.1.4';
 /**
  * Reccurence rule
  * @typedef {Object} RRule
@@ -204,7 +204,7 @@ var install = function install(Vue) {
     download: function download(filename) {
       var Calendar = addCRLF("\n    BEGIN:VCALENDAR\n    PRODID:".concat(options.prodId, "\n    VERSION:2.0\n    ").concat(Events.join('\n'), "\n    END:VCALENDAR\n\n      ").replace(/^\s*[\r\n]/gm, "").replace(/^\s+/gm, ''));
       var blob = new Blob([Calendar], {
-        type: "text/x-vCalendar;charset=utf-8"
+        type: "text/calendar;charset=utf-8"
       });
       saveAs(blob, "".concat(filename, ".ics"));
     }
