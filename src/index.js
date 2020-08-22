@@ -213,8 +213,10 @@ const install = (Vue, options = {uidDomain: 'evildvl', prodId: 'vueICS'}) => {
     END:VCALENDAR
 
       `.replace(/^\s*[\r\n]/gm, "").replace(/^\s+/gm, ''))
-      var blob = new Blob([Calendar], {type: "text/calendar;charset=utf-8"});
-      saveAs(blob, `${filename}.ics`);
+      window.open( "data:text/calendar;charset=utf8," + escape([Calendar]));
+      
+      // var blob = new Blob([Calendar], {type: "text/calendar;charset=utf-8"});
+      // saveAs(blob, `${filename}.ics`);
     }
 
   }

@@ -3,7 +3,7 @@
  * (c) 2020 Stanislav Mihaylov <ceo@pepper.llc>
  * Released under the MIT License.
  */
-import { saveAs } from 'file-saver';
+import 'file-saver';
 
 var version = '0.1.4';
 /**
@@ -203,10 +203,8 @@ var install = function install(Vue) {
      */
     download: function download(filename) {
       var Calendar = addCRLF("\n    BEGIN:VCALENDAR\n    PRODID:".concat(options.prodId, "\n    VERSION:2.0\n    ").concat(Events.join('\n'), "\n    END:VCALENDAR\n\n      ").replace(/^\s*[\r\n]/gm, "").replace(/^\s+/gm, ''));
-      var blob = new Blob([Calendar], {
-        type: "text/calendar;charset=utf-8"
-      });
-      saveAs(blob, "".concat(filename, ".ics"));
+      window.open("data:text/calendar;charset=utf8," + escape(Calendar)); // var blob = new Blob([Calendar], {type: "text/calendar;charset=utf-8"});
+      // saveAs(blob, `${filename}.ics`);
     }
   };
 };
